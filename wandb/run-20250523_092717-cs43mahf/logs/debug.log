@@ -1,0 +1,34 @@
+2025-05-23 09:27:17,232 INFO    MainThread:57660 [wandb_setup.py:_flush():70] Current SDK version is 0.19.11
+2025-05-23 09:27:17,232 INFO    MainThread:57660 [wandb_setup.py:_flush():70] Configure stats pid to 57660
+2025-05-23 09:27:17,232 INFO    MainThread:57660 [wandb_setup.py:_flush():70] Loading settings from /home/linh/.config/wandb/settings
+2025-05-23 09:27:17,232 INFO    MainThread:57660 [wandb_setup.py:_flush():70] Loading settings from /home/linh/Desktop/FreelanceWork/wandb/settings
+2025-05-23 09:27:17,232 INFO    MainThread:57660 [wandb_setup.py:_flush():70] Loading settings from environment variables
+2025-05-23 09:27:17,232 INFO    MainThread:57660 [wandb_init.py:setup_run_log_directory():724] Logging user logs to ./wandb/run-20250523_092717-cs43mahf/logs/debug.log
+2025-05-23 09:27:17,233 INFO    MainThread:57660 [wandb_init.py:setup_run_log_directory():725] Logging internal logs to ./wandb/run-20250523_092717-cs43mahf/logs/debug-internal.log
+2025-05-23 09:27:17,233 INFO    MainThread:57660 [wandb_init.py:init():852] calling init triggers
+2025-05-23 09:27:17,233 INFO    MainThread:57660 [wandb_init.py:init():857] wandb.init called with sweep_config: {}
+config: {'_wandb': {}}
+2025-05-23 09:27:17,233 INFO    MainThread:57660 [wandb_init.py:init():893] starting backend
+2025-05-23 09:27:17,233 INFO    MainThread:57660 [wandb_init.py:init():897] sending inform_init request
+2025-05-23 09:27:17,237 INFO    MainThread:57660 [backend.py:_multiprocessing_setup():101] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2025-05-23 09:27:17,237 INFO    MainThread:57660 [wandb_init.py:init():907] backend started and connected
+2025-05-23 09:27:17,239 INFO    MainThread:57660 [wandb_init.py:init():1005] updated telemetry
+2025-05-23 09:27:17,240 INFO    MainThread:57660 [wandb_init.py:init():1029] communicating run to backend with 90.0 second timeout
+2025-05-23 09:27:18,285 WARNING MainThread:57660 [wandb_init.py:init():1681] [no run ID] interrupted
+Traceback (most recent call last):
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1677, in init
+    return wi.init(run_settings, run_config, run_printer)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1055, in init
+    result = wait_with_progress(
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/mailbox/wait_with_progress.py", line 24, in wait_with_progress
+    return wait_all_with_progress(
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/mailbox/wait_with_progress.py", line 87, in wait_all_with_progress
+    return asyncio_compat.run(progress_loop_with_timeout)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/lib/asyncio_compat.py", line 30, in run
+    return future.result()
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/concurrent/futures/_base.py", line 453, in result
+    self._condition.wait(timeout)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/threading.py", line 320, in wait
+    waiter.acquire()
+KeyboardInterrupt
+2025-05-23 09:27:18,331 INFO    MsgRouterThr:57660 [mailbox.py:close():129] [no run ID] Closing mailbox, abandoning 0 handles.

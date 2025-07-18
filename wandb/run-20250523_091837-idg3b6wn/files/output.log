@@ -1,0 +1,53 @@
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name     | Type               | Params | Mode
+--------------------------------------------------------
+0 | model    | ResNet             | 21.3 M | train
+1 | accuracy | MulticlassAccuracy | 0      | train
+--------------------------------------------------------
+21.3 M    Trainable params
+0         Non-trainable params
+21.3 M    Total params
+85.159    Total estimated model params size (MB)
+117       Modules in train mode
+0         Modules in eval mode
+Sanity Checking DataLoader 0:   0%|                                                                                                       | 0/2 [00:00<?, ?it/s]
+/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:425: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=11` in the `DataLoader` to improve performance.
+Traceback (most recent call last):
+  File "/home/linh/Desktop/FreelanceWork/main.py", line 217, in <module>
+    trainer.fit(model, dm)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 561, in fit
+    call._call_and_handle_interrupt(
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 48, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 599, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1012, in _run
+    results = self._run_stage()
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1054, in _run_stage
+    self._run_sanity_check()
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1083, in _run_sanity_check
+    val_loop.run()
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/loops/utilities.py", line 179, in _decorator
+    return loop_run(self, *args, **kwargs)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 145, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 437, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 328, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 412, in validation_step
+    return self.lightning_module.validation_step(*args, **kwargs)
+  File "/home/linh/Desktop/FreelanceWork/main.py", line 160, in validation_step
+    logits = self(x)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/linh/Desktop/FreelanceWork/main.py", line 137, in forward
+    x = self._forward_features(x)
+  File "/home/linh/Desktop/FreelanceWork/main.py", line 129, in _forward_features
+    x = F.relu(self.conv1(x))
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1928, in __getattr__
+    raise AttributeError(
+AttributeError: 'LitModel' object has no attribute 'conv1'

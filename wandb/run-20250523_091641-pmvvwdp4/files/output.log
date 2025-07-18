@@ -1,0 +1,63 @@
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name     | Type               | Params | Mode
+--------------------------------------------------------
+0 | conv1    | Conv2d             | 896    | train
+1 | conv2    | Conv2d             | 9.2 K  | train
+2 | conv3    | Conv2d             | 18.5 K | train
+3 | conv4    | Conv2d             | 36.9 K | train
+4 | pool1    | MaxPool2d          | 0      | train
+5 | pool2    | MaxPool2d          | 0      | train
+6 | fc1      | Linear             | 819 K  | train
+7 | fc2      | Linear             | 65.7 K | train
+8 | fc3      | Linear             | 1.3 K  | train
+9 | accuracy | MulticlassAccuracy | 0      | train
+--------------------------------------------------------
+952 K     Trainable params
+0         Non-trainable params
+952 K     Total params
+3.809     Total estimated model params size (MB)
+10        Modules in train mode
+0         Modules in eval mode
+Sanity Checking DataLoader 0:   0%|                                                                                                       | 0/2 [00:00<?, ?it/s]
+/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:425: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=11` in the `DataLoader` to improve performance.
+Traceback (most recent call last):
+  File "/home/linh/Desktop/FreelanceWork/main.py", line 222, in <module>
+    trainer.fit(model, dm)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 561, in fit
+    call._call_and_handle_interrupt(
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 48, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 599, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1012, in _run
+    results = self._run_stage()
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1054, in _run_stage
+    self._run_sanity_check()
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1083, in _run_sanity_check
+    val_loop.run()
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/loops/utilities.py", line 179, in _decorator
+    return loop_run(self, *args, **kwargs)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 145, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 437, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 328, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 412, in validation_step
+    return self.lightning_module.validation_step(*args, **kwargs)
+  File "/home/linh/Desktop/FreelanceWork/main.py", line 165, in validation_step
+    logits = self(x)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/linh/Desktop/FreelanceWork/main.py", line 144, in forward
+    x = F.relu(self.fc1(x))
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (32x179776 and 1600x512)

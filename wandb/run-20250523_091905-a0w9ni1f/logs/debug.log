@@ -1,0 +1,81 @@
+2025-05-23 09:19:05,763 INFO    MainThread:53106 [wandb_setup.py:_flush():70] Current SDK version is 0.19.11
+2025-05-23 09:19:05,763 INFO    MainThread:53106 [wandb_setup.py:_flush():70] Configure stats pid to 53106
+2025-05-23 09:19:05,763 INFO    MainThread:53106 [wandb_setup.py:_flush():70] Loading settings from /home/linh/.config/wandb/settings
+2025-05-23 09:19:05,763 INFO    MainThread:53106 [wandb_setup.py:_flush():70] Loading settings from /home/linh/Desktop/FreelanceWork/wandb/settings
+2025-05-23 09:19:05,763 INFO    MainThread:53106 [wandb_setup.py:_flush():70] Loading settings from environment variables
+2025-05-23 09:19:05,763 INFO    MainThread:53106 [wandb_init.py:setup_run_log_directory():724] Logging user logs to ./wandb/run-20250523_091905-a0w9ni1f/logs/debug.log
+2025-05-23 09:19:05,763 INFO    MainThread:53106 [wandb_init.py:setup_run_log_directory():725] Logging internal logs to ./wandb/run-20250523_091905-a0w9ni1f/logs/debug-internal.log
+2025-05-23 09:19:05,763 INFO    MainThread:53106 [wandb_init.py:init():852] calling init triggers
+2025-05-23 09:19:05,763 INFO    MainThread:53106 [wandb_init.py:init():857] wandb.init called with sweep_config: {}
+config: {'_wandb': {}}
+2025-05-23 09:19:05,763 INFO    MainThread:53106 [wandb_init.py:init():893] starting backend
+2025-05-23 09:19:05,763 INFO    MainThread:53106 [wandb_init.py:init():897] sending inform_init request
+2025-05-23 09:19:05,766 INFO    MainThread:53106 [backend.py:_multiprocessing_setup():101] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2025-05-23 09:19:05,766 INFO    MainThread:53106 [wandb_init.py:init():907] backend started and connected
+2025-05-23 09:19:05,766 INFO    MainThread:53106 [wandb_init.py:init():1005] updated telemetry
+2025-05-23 09:19:05,767 INFO    MainThread:53106 [wandb_init.py:init():1029] communicating run to backend with 90.0 second timeout
+2025-05-23 09:19:06,890 INFO    MainThread:53106 [wandb_init.py:init():1104] starting run threads in backend
+2025-05-23 09:19:07,040 INFO    MainThread:53106 [wandb_run.py:_console_start():2573] atexit reg
+2025-05-23 09:19:07,040 INFO    MainThread:53106 [wandb_run.py:_redirect():2421] redirect: wrap_raw
+2025-05-23 09:19:07,040 INFO    MainThread:53106 [wandb_run.py:_redirect():2490] Wrapping output streams.
+2025-05-23 09:19:07,040 INFO    MainThread:53106 [wandb_run.py:_redirect():2513] Redirects installed.
+2025-05-23 09:19:07,041 INFO    MainThread:53106 [wandb_init.py:init():1150] run started, returning control to user process
+2025-05-23 09:19:07,200 INFO    MainThread:53106 [wandb_run.py:_config_callback():1436] config_cb None None {'input_shape': [3, 32, 32], 'num_classes': 10, 'learning_rate': 0.0002}
+2025-05-23 09:22:08,339 INFO    MsgRouterThr:53106 [mailbox.py:close():129] [no run ID] Closing mailbox, abandoning 1 handles.
+2025-05-23 09:22:14,739 ERROR   MainThread:53106 [redirect.py:_on_write():664] [no run ID] error in stdout callback
+Traceback (most recent call last):
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2494, in <lambda>
+    lambda data: self._console_raw_callback("stdout", data),
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 761, in publish_output_raw
+    o.timestamp.GetCurrentTime()
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/google/protobuf/internal/well_known_types.py", line 184, in GetCurrentTime
+    self.FromDatetime(datetime.datetime.now(tz=datetime.timezone.utc))
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/google/protobuf/internal/well_known_types.py", line 283, in FromDatetime
+    seconds = calendar.timegm(dt.utctimetuple())
+ImportError: sys.meta_path is None, Python is likely shutting down
+2025-05-23 09:22:14,782 ERROR   MainThread:53106 [redirect.py:_on_write():664] [no run ID] error in stdout callback
+Traceback (most recent call last):
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2494, in <lambda>
+    lambda data: self._console_raw_callback("stdout", data),
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 761, in publish_output_raw
+    o.timestamp.GetCurrentTime()
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/google/protobuf/internal/well_known_types.py", line 184, in GetCurrentTime
+    self.FromDatetime(datetime.datetime.now(tz=datetime.timezone.utc))
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/google/protobuf/internal/well_known_types.py", line 283, in FromDatetime
+    seconds = calendar.timegm(dt.utctimetuple())
+ImportError: sys.meta_path is None, Python is likely shutting down
+2025-05-23 09:22:14,790 ERROR   MainThread:53106 [redirect.py:_on_write():664] [no run ID] error in stdout callback
+Traceback (most recent call last):
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2494, in <lambda>
+    lambda data: self._console_raw_callback("stdout", data),
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 761, in publish_output_raw
+    o.timestamp.GetCurrentTime()
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/google/protobuf/internal/well_known_types.py", line 184, in GetCurrentTime
+    self.FromDatetime(datetime.datetime.now(tz=datetime.timezone.utc))
+  File "/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/google/protobuf/internal/well_known_types.py", line 283, in FromDatetime
+    seconds = calendar.timegm(dt.utctimetuple())
+ImportError: sys.meta_path is None, Python is likely shutting down

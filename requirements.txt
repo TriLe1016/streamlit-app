@@ -1,0 +1,7 @@
+torch 
+torchvision 
+torchaudio 
+streamlit
+pillow
+numpy
+pytorch_lightning

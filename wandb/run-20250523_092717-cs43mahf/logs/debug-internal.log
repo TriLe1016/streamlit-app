@@ -1,0 +1,16 @@
+{"time":"2025-05-23T09:27:17.241241103+07:00","level":"INFO","msg":"stream: starting","core version":"0.19.11","symlink path":"wandb/run-20250523_092717-cs43mahf/logs/debug-core.log"}
+{"time":"2025-05-23T09:27:17.660491094+07:00","level":"INFO","msg":"created new stream","id":"cs43mahf"}
+{"time":"2025-05-23T09:27:17.660522908+07:00","level":"INFO","msg":"stream: started","id":"cs43mahf"}
+{"time":"2025-05-23T09:27:17.660543932+07:00","level":"INFO","msg":"handler: started","stream_id":"cs43mahf"}
+{"time":"2025-05-23T09:27:17.660566125+07:00","level":"INFO","msg":"sender: started","stream_id":"cs43mahf"}
+{"time":"2025-05-23T09:27:17.660568831+07:00","level":"INFO","msg":"writer: Do: started","stream_id":"cs43mahf"}
+{"time":"2025-05-23T09:27:18.332608324+07:00","level":"INFO","msg":"stream: closing","id":"cs43mahf"}
+{"time":"2025-05-23T09:27:18.595710433+07:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/graphql"}
+{"time":"2025-05-23T09:27:18.595799499+07:00","level":"ERROR","msg":"runfiles: CreateRunFiles returned error: returned error 404: {\"data\":{\"createRunFiles\":null},\"errors\":[{\"message\":\"project /wandb-lightning not found during createRunFiles\",\"path\":[\"createRunFiles\"]}]}"}
+{"time":"2025-05-23T09:27:18.835103147+07:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/graphql"}
+{"time":"2025-05-23T09:27:18.835176573+07:00","level":"ERROR","msg":"runfiles: CreateRunFiles returned error: returned error 404: {\"data\":{\"createRunFiles\":null},\"errors\":[{\"message\":\"project /wandb-lightning not found during createRunFiles\",\"path\":[\"createRunFiles\"]}]}"}
+{"time":"2025-05-23T09:27:18.835216108+07:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-05-23T09:27:18.835246935+07:00","level":"INFO","msg":"handler: closed","stream_id":"cs43mahf"}
+{"time":"2025-05-23T09:27:18.835265453+07:00","level":"INFO","msg":"writer: Close: closed","stream_id":"cs43mahf"}
+{"time":"2025-05-23T09:27:18.835285948+07:00","level":"INFO","msg":"sender: closed","stream_id":"cs43mahf"}
+{"time":"2025-05-23T09:27:18.835305169+07:00","level":"INFO","msg":"stream: closed","id":"cs43mahf"}
