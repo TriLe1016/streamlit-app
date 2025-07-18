@@ -1,0 +1,19 @@
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name     | Type               | Params | Mode
+--------------------------------------------------------
+0 | model    | ResNet             | 21.3 M | train
+1 | accuracy | MulticlassAccuracy | 0      | train
+--------------------------------------------------------
+21.3 M    Trainable params
+0         Non-trainable params
+21.3 M    Total params
+85.159    Total estimated model params size (MB)
+117       Modules in train mode
+0         Modules in eval mode
+Epoch 1:  97%|██████████████████████████████████████████████████████████████████▉  | 253/261 [01:33<00:02,  2.70it/s, v_num=ni1f, val_loss=-63.7, val_acc=0.738]
+/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:425: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=11` in the `DataLoader` to improve performance.
+/home/linh/miniconda3/envs/torch2tf/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:425: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=11` in the `DataLoader` to improve performance.
+                                                                                                                                                                
+
+Detected KeyboardInterrupt, attempting graceful shutdown ...
