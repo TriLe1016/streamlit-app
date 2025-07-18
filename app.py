@@ -3,112 +3,115 @@ import streamlit as st
 from PIL import Image
 import torch
 from torchvision import transforms
-from main import LitModel  # Make sure LitModel is imported properly
+from main import LitModel
 
-# Custom CSS for styling
+# ------------------- PAGE CONFIG -------------------
+st.set_page_config(
+    page_title="Paddy Disease Classifier",
+    page_icon="🌾",
+    layout="centered",
+)
+
+# ------------------- CUSTOM CSS -------------------
 st.markdown("""
 <style>
-    .main {
-        background-color: #f0f2f6;
-        padding: 20px;
-        border-radius: 10px;
+    body {
+        background-color: #f4f6f7;
+        font-family: 'Segoe UI', sans-serif;
     }
     .stButton>button {
-        background-color: #4CAF50;
+        background-color: #2e7d32;
         color: white;
         border-radius: 8px;
         padding: 10px 20px;
         font-size: 16px;
     }
     .stFileUploader {
+        border: 2px dashed #2e7d32;
+        border-radius: 12px;
+        padding: 20px;
         background-color: #ffffff;
-        border: 2px dashed #4CAF50;
-        border-radius: 10px;
-        padding: 10px;
     }
-    .result-box {
+    .result-card {
         background-color: #ffffff;
-        padding: 15px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        margin-top: 20px;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        margin-top: 30px;
+        text-align: center;
     }
     .header {
-        color: #2E7D32;
-        font-size: 36px;
+        color: #2e7d32;
+        font-size: 40px;
+        font-weight: bold;
         text-align: center;
-        margin-bottom: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
     .subheader {
-        color: #424242;
         font-size: 18px;
+        color: #555;
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# Load trained model
+# ------------------- LOAD MODEL -------------------
 ckpt_path = os.path.join(os.path.dirname(__file__), "mobilenet-best.ckpt")
 model = LitModel.load_from_checkpoint(ckpt_path, input_shape=(3, 224, 224), num_classes=10)
 model.to("cpu")
 model.eval()
 
-# Define transform (same as test_transform used in training)
 transform = transforms.Compose([
     transforms.Resize((224, 224)),
     transforms.ToTensor(),
     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
 ])
 
-# Define label mapping
-class_names = ['bacterial_leaf_blight',
-               'bacterial_leaf_streak',
-               'bacterial_panicle_blight',
-               'blast',
-               'brown_spot',
-               'dead_heart',
-               'downy_mildew',
-               'hispa',
-               'normal',
-               'tungro']
+class_names = [
+    'bacterial_leaf_blight',
+    'bacterial_leaf_streak',
+    'bacterial_panicle_blight',
+    'blast',
+    'brown_spot',
+    'dead_heart',
+    'downy_mildew',
+    'hispa',
+    'normal',
+    'tungro'
+]
 
-# App title and description
+# ------------------- UI HEADER -------------------
 st.markdown('<div class="header">🌾 Paddy Disease Classifier</div>', unsafe_allow_html=True)
-st.markdown('<div class="subheader">Upload an image of a rice leaf to detect potential diseases with our AI model.</div>', unsafe_allow_html=True)
+st.markdown('<div class="subheader">Upload an image of a rice leaf to identify possible diseases using AI.</div>', unsafe_allow_html=True)
 
-# File uploader
+# ------------------- FILE UPLOAD -------------------
 uploaded_file = st.file_uploader("📤 Upload a leaf image (PNG, JPG, JPEG)", type=['png', 'jpg', 'jpeg'])
 
 if uploaded_file:
-    # Display uploaded image
-    col1, col2 = st.columns([1, 1])
-    with col1:
-        image = Image.open(uploaded_file).convert("RGB")
-        st.image(image, caption="Uploaded Image", use_column_width=True)
+    image = Image.open(uploaded_file).convert("RGB")
+    
+    st.image(image, caption="🖼️ Uploaded Image", use_column_width=True)
 
-    # Process image with spinner
-    with col2:
-        with st.spinner("🧠 Analyzing image..."):
-            # Preprocess image
-            input_tensor = transform(image).unsqueeze(0)  # Add batch dimension
+    with st.spinner("🧠 Analyzing with AI model..."):
+        input_tensor = transform(image).unsqueeze(0)
 
-            # Inference
-            with torch.no_grad():
-                outputs = model(input_tensor)
-                probs = torch.nn.functional.softmax(outputs, dim=1)
-                pred = torch.argmax(probs, dim=1).item()
-                confidence = probs[0][pred].item()
+        with torch.no_grad():
+            outputs = model(input_tensor)
+            probs = torch.nn.functional.softmax(outputs, dim=1)
+            pred = torch.argmax(probs, dim=1).item()
+            confidence = probs[0][pred].item()
 
-        # Display results in a styled box
-        st.markdown('<div class="result-box">', unsafe_allow_html=True)
-        st.markdown(f"### Predicted Disease: **{class_names[pred]}**")
-        st.markdown(f"### Confidence Score: **{confidence:.2%}**")
-        st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('<div class="result-card">', unsafe_allow_html=True)
+    st.markdown(f"### 🩺 **Prediction:** `{class_names[pred]}`")
+    st.markdown(f"### 🔍 **Confidence:** `{confidence:.2%}`")
+    st.markdown('</div>', unsafe_allow_html=True)
 
-# Footer
+# ------------------- FOOTER -------------------
 st.markdown("""
-<div style='text-align: center; color: #757575; margin-top: 40px;'>
-    Powered by Streamlit & PyTorch | Developed with ❤️ for agricultural innovation
+<hr style="margin-top: 50px;"/>
+<div style='text-align: center; color: #888; font-size: 14px; margin-top: 20px;'>
+    © 2025 - Developed with ❤️ using Streamlit & PyTorch for smart agriculture 🌱
 </div>
 """, unsafe_allow_html=True)
