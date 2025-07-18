@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 from PIL import Image
 import torch
@@ -48,10 +49,10 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Load trained model
-model = LitModel.load_from_checkpoint("D:\code (1)\code\mobilenet-best.ckpt", input_shape=(3, 224, 224), num_classes=10)
+ckpt_path = os.path.join(os.path.dirname(__file__), "mobilenet-best.ckpt")
+model = LitModel.load_from_checkpoint(ckpt_path, input_shape=(3, 224, 224), num_classes=10)
 model.to("cpu")
 model.eval()
-
 # Define transform (same as test_transform used in training)
 transform = transforms.Compose([
     transforms.Resize((224, 224)),
